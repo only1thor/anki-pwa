@@ -21,6 +21,20 @@ A progressive web app for flashcard learning with spaced repetition, built with 
 - **PWA**: vite-plugin-pwa with Workbox
 - **Dev Environment**: Nix flake
 
+## 🚀 Quick Deploy
+
+**Deploy to GitHub Pages automatically:**
+
+1. Push this repo to GitHub
+2. Go to Settings → Pages → Source: "GitHub Actions"
+3. Your app will be live at `https://username.github.io/repo-name/`
+
+See [GITHUB_PAGES.md](GITHUB_PAGES.md) for detailed instructions.
+
+**Or deploy to other platforms:**
+
+See [DEPLOY.md](DEPLOY.md) for Netlify, Vercel, and more options.
+
 ## Getting Started
 
 ### Using Nix (Recommended)

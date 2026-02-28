@@ -3,6 +3,11 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+  // Base path for GitHub Pages
+  // Will be set to /repo-name/ when deployed to GitHub Pages
+  // For custom domain or root deploy, set to '/'
+  base: process.env.GITHUB_ACTIONS ? '/' : '/',
+  
   plugins: [
     react(),
     VitePWA({
