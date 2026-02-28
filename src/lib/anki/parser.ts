@@ -34,7 +34,7 @@ export async function parseApkgFile(file: File): Promise<ApkgDeck> {
     
     // Check for required files
     const collectionFile = zip.file('collection.anki2');
-    const mediaFile = zip.file('media');
+    // const mediaFile = zip.file('media'); // TODO: use when implementing media support
     
     if (!collectionFile) {
       throw new Error('Invalid .apkg file: missing collection.anki2');
@@ -76,8 +76,8 @@ export function isApkgFile(file: File): boolean {
  * This is a placeholder for future implementation
  */
 export async function exportToApkg(
-  deckName: string,
-  cards: Card[]
+  _deckName: string,
+  _cards: Card[]
 ): Promise<Blob> {
   // TODO: Implement export functionality
   // Would need to:

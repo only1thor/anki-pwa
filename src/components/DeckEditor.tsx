@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { db, getDeck, updateDeck, getCardsForDeck, createCard, deleteCard, updateCard } from '../lib/db';
+import { getDeck, updateDeck, getCardsForDeck, createCard, deleteCard, updateCard } from '../lib/db';
 import type { Card } from '../types';
 
 interface DeckEditorProps {

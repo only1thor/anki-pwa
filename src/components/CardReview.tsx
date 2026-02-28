@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { db, getDeck, updateCard, recordReview, getDueCards, getNewCards } from '../lib/db';
+import { getDeck, updateCard, recordReview, getDueCards, getNewCards } from '../lib/db';
 import { calculateSM2, getIntervalPreview, prioritizeCards } from '../lib/anki/sm2';
-import type { Card, ReviewRating } from '../types';
+import type { ReviewRating } from '../types';
 
 interface CardReviewProps {
   deckId: string;
