@@ -2,6 +2,24 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Development Environment (Nix)
+
+**Always use Nix** to run commands in this project. The repo includes a `flake.nix` that provides Node.js 20, npm, and TypeScript.
+
+```bash
+nix develop          # Enter the dev shell (provides node, npm, tsc)
+```
+
+To run a single command without entering the shell:
+
+```bash
+nix develop --command npm run build
+nix develop --command npm run dev
+nix develop --command npx tsc --noEmit
+```
+
+Do **not** rely on system-installed `node`, `npm`, or `tsc` — use `nix develop` so the environment is reproducible.
+
 ## Commands
 
 ```bash
@@ -11,7 +29,7 @@ npm run preview      # Preview production build
 npm run type-check   # TypeScript check without emit
 ```
 
-No linting or test runner is configured. The project uses a Nix flake for reproducible environments (`nix develop`).
+No linting or test runner is configured.
 
 ## Architecture
 
