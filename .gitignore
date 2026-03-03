@@ -23,6 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
+# Nix build output
+result
+result-*
+
 # Environment variables
 .env
 .env.local

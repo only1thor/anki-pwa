@@ -12,6 +12,36 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
+        packages.default = pkgs.buildNpmPackage {
+          pname = "anki-pwa";
+          version = "0.1.0";
+          src = ./.;
+
+          # Run `nix build .#` from a machine with clean internet access to get the correct hash.
+          # Or push to CI — it will fail and print: got: sha256-<correct-hash>
+          npmDepsHash = pkgs.lib.fakeHash;
+
+          npmFlags = [ "--ignore-scripts" ];
+
+          env = {
+            GITHUB_REPOSITORY = "only1thor/anki-pwa";
+            NODE_ENV = "production";
+          };
+
+          buildPhase = ''
+            runHook preBuild
+            export PATH="$PWD/node_modules/.bin:$PATH"
+            tsc && vite build
+            runHook postBuild
+          '';
+
+          installPhase = ''
+            runHook preInstall
+            cp -r dist $out
+            runHook postInstall
+          '';
+        };
+
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             nodejs_20

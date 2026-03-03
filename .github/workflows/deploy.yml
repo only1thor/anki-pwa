@@ -28,22 +28,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Install Nix
+        uses: cachix/install-nix-action@v27
         with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
-        run: npm run build
+        run: nix build .#
         env:
-          # Important: Set base path for GitHub Pages
-          # This will be /repo-name/ 
-          # Vite will use VITE_BASE from env or default to /
-          NODE_ENV: production
+          GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -51,7 +45,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './result'
 
   # Deployment job
   deploy:
