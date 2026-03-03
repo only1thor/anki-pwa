@@ -17,9 +17,7 @@
           version = "0.1.0";
           src = ./.;
 
-          # Run `nix build .#` from a machine with clean internet access to get the correct hash.
-          # Or push to CI — it will fail and print: got: sha256-<correct-hash>
-          npmDepsHash = pkgs.lib.fakeHash;
+          npmDepsHash = "sha256-cvrYuQYGuz3il5mflTfvmGJbt36nGcQI7nDIsoT2ud8=";
 
           npmFlags = [ "--ignore-scripts" ];
 
