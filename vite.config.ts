@@ -2,11 +2,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1];
+const base = repoName ? `/${repoName}/` : '/';
+
 export default defineConfig({
-  // Base path for GitHub Pages
-  // Will be set to /repo-name/ when deployed to GitHub Pages
-  // For custom domain or root deploy, set to '/'
-  base: process.env.GITHUB_ACTIONS ? '/' : '/',
+  base,
   
   plugins: [
     react(),
@@ -21,8 +21,8 @@ export default defineConfig({
         background_color: '#0f0f0f',
         display: 'standalone',
         orientation: 'portrait',
-        scope: '/',
-        start_url: '/',
+        scope: base,
+        start_url: base,
         icons: [
           {
             src: '/icons/icon-72x72.png',
